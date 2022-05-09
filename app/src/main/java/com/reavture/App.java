@@ -10,6 +10,8 @@ public class App {
 
     public static void main(String[] args) {
 
+
+
         Javalin server = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
         server.start(8080);
     }
