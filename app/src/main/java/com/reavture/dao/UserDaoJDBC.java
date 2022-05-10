@@ -5,9 +5,7 @@ import com.reavture.utils.ConnectionSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class UserDaoJDBC implements IUserDao{
 
@@ -32,8 +30,27 @@ public class UserDaoJDBC implements IUserDao{
     }
 
     @Override
-    public User readUserByUserId(int user_id) {
-        return null;
+    public User readUserByUsername(String username, String password) {
+        Connection c = cs.getConnection();
+
+        String sql = "select * from public.users where username=? and password=?";
+
+        User loggedIn = null;
+        try {
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                loggedIn = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            logger.info("#3. User data retrieved!");
+        }
+        return loggedIn;
     }
 
     @Override

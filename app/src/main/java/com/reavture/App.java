@@ -17,15 +17,11 @@ public class App {
     public static void main(String[] args) {
 
         UserDaoJDBC daotest = new UserDaoJDBC();
-        User u = new User();
-        u.setUsername("gerika");
-        u.setFirst_name("Gwen");
-        u.setLast_name("Erika");
-        u.setPassword("k9k1p2");
-        u.setEmail("gwen@revature.net");
-        u.setRole(1);
+        User u = daotest.readUserByUsername("jharnor0", "jharnor0@wiley.com");;
+        u.setUsername("jharnor0");
+        u.setPassword("jharnor0@wiley.com");
+        logger.info(u.toString());
 
-        daotest.createUser(u);
 
         try{
             Javalin server = Javalin.create(JavalinConfig::enableCorsForAllOrigins);

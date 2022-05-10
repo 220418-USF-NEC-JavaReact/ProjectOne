@@ -7,7 +7,7 @@ public interface IUserDao {
     public void createUser(User u);
 
     // Read information of a user by the ID
-    public User readUserByUserId(int user_id);
+    public User readUserByUsername(String username, String password);
 
     // Update the user information
     public User updateUser(User u);
