@@ -3,16 +3,37 @@
  */
 package com.reavture;
 
+import com.reavture.dao.UserDaoJDBC;
+import com.reavture.models.User;
 import io.javalin.Javalin;
 import io.javalin.core.JavalinConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class App {
 
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
+
     public static void main(String[] args) {
 
+        UserDaoJDBC daotest = new UserDaoJDBC();
+        User u = new User();
+        u.setUsername("gerika");
+        u.setFirst_name("Gwen");
+        u.setLast_name("Erika");
+        u.setPassword("k9k1p2");
+        u.setEmail("gwen@revature.net");
+        u.setRole(1);
 
+        daotest.createUser(u);
 
-        Javalin server = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
-        server.start(8080);
+        try{
+            Javalin server = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
+            server.start(8080);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }finally {
+            logger.info("#2. Connection succeeded!");
+        }
     }
 }
