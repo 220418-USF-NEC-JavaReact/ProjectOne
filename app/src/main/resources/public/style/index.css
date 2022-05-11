@@ -1,0 +1,32 @@
+.body{
+    background: #0d0a00;
+}
+
+.main{
+    display:flex;
+    align-items: center;
+flex-direction: column;}
+
+.logo{
+    
+width: 500px;}
+
+.login-form{
+    display:flex
+;flex-direction: column;align-items: center;padding: 50px;border: 1px #ffc107 solid;border-radius: 20px;}
+
+.label{
+
+font-size: x-large;font-family: sans-serif;color: #ffc107;}
+
+.input{
+
+width: 350px;margin-bottom: 25px;font-size: x-large;border: #ffc107;border-style: groove;color: #7c5d00;background: #ecdec8;}
+
+.btnSubmit{
+width: 200px;height: 50px;margin-top: 25px;font-size: x-large;font-family: sans-serif;color: #ffc107;background: #ffc10700;border: 3px solid #ffeb3b;border-radius: 10px;transition-duration: 0.4s;}
+
+.btnSubmit:hover{
+background:#fbce47;
+color:#0d0a00;
+}
