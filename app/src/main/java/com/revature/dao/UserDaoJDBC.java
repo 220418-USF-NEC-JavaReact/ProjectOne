@@ -1,7 +1,7 @@
-package com.reavture.dao;
+package com.revature.dao;
 
-import com.reavture.models.User;
-import com.reavture.utils.ConnectionSingleton;
+import com.revature.models.User;
+import com.revature.utils.ConnectionSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,16 +30,15 @@ public class UserDaoJDBC implements IUserDao{
     }
 
     @Override
-    public User readUserByUsername(String username, String password) {
+    public User readUserByUsername(String username) {
         Connection c = cs.getConnection();
 
-        String sql = "select * from public.users where username=? and password=?";
+        String sql = "select * from public.users where username=?";
 
         User loggedIn = null;
         try {
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, username);
-            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){

@@ -1,13 +1,13 @@
-package com.reavture.dao;
+package com.revature.dao;
 
-import com.reavture.models.User;
+import com.revature.models.User;
 
 public interface IUserDao {
     // Create a new User
     public void createUser(User u);
 
     // Read information of a user by the ID
-    public User readUserByUsername(String username, String password);
+    public User readUserByUsername(String username);
 
     // Update the user information
     public User updateUser(User u);
