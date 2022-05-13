@@ -20,10 +20,9 @@ public class UserService {
 
         if(u != null){
             if(password.equals(u.getPassword())){
-                logger.info("5. Login Successful, welcome "+u.getFirst_name()+" "+u.getLast_name());
                 return u;
             } else{
-                logger.info("4. Incorrect password, please enter your password carefully!");
+                //Incorrect password
                 return null;
             }
         }

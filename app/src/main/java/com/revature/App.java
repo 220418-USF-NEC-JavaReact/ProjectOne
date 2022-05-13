@@ -3,6 +3,7 @@
  */
 package com.revature;
 
+import com.revature.controllers.UserController;
 import com.revature.dao.IUserDao;
 import com.revature.dao.UserDaoJDBC;
 import com.revature.models.User;
@@ -12,20 +13,30 @@ import io.javalin.core.JavalinConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static io.javalin.apibuilder.ApiBuilder.*;
+
 public class App {
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
-        IUserDao ud = new UserDaoJDBC();
-        UserService us = new UserService(ud);
-        User u = us.loginUser("jharnor0", "jharnor0@wiley.com");
-
-        logger.info(u.toString());
+        IUserDao uDao = new UserDaoJDBC();
+        UserService uService = new UserService(uDao);
+        UserController uController = new UserController(uService);
 
 
         try{
             Javalin server = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
+
+            server.routes(()-> {
+                path("employee", () -> {
+                    post("/login", uController.handleLogin);
+                    //put("/", uController.handleUpdateUser);
+                });
+                path("manager", () -> {
+                });
+            });
+
             server.start(8080);
         } catch (Exception e){
             throw new RuntimeException(e);
