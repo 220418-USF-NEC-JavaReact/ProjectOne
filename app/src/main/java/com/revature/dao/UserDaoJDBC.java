@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import com.revature.models.LoginObject;
 import com.revature.models.User;
 import com.revature.utils.ConnectionSingleton;
 import org.slf4j.Logger;
@@ -11,6 +12,8 @@ public class UserDaoJDBC implements IUserDao{
 
     public static final ConnectionSingleton cs = ConnectionSingleton.getConnectionSingleton();
     private static final Logger logger = LoggerFactory.getLogger(UserDaoJDBC.class);
+
+    private LoginObject lo;
     @Override
     public void createUser(User u) {
         Connection c = cs.getConnection();
@@ -54,7 +57,31 @@ public class UserDaoJDBC implements IUserDao{
 
     @Override
     public User updateUser(User u) {
-        return null;
+        Connection c = cs.getConnection();
+        String sql = "UPDATE users " +
+                "SET first_name = ?, " + //index 1
+                "last_name = ?, " + //index 2
+                "email = ?, " + //index 3
+                "password = ? " + //index 4s
+                "WHERE user_id = ?"; //index 5
+
+        try{
+            PreparedStatement p = c.prepareStatement(sql);
+
+            p.setString(1, u.getFirst_name());
+            p.setString(2, u.getLast_name());
+            p.setString(3, u.getEmail());
+            p.setString(4, u.getPassword());
+            p.setInt(5, u.getUser_id());
+
+            p.execute();
+
+            return u;
+
+        } catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

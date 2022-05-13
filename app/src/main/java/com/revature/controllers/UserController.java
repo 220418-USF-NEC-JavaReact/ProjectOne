@@ -28,13 +28,34 @@ public class UserController {
         if(u != null){
             //set up a session for logged user
             ctx.req.getSession().setAttribute("loggedIn", u.getUsername());
-            ctx.req.getSession().setAttribute("loggedIn", u.getPassword());
+            ctx.req.getSession().setAttribute("user_id", u.getUser_id());
+            ctx.req.getSession().setAttribute("role", u.getRole());
             ctx.result(om.writeValueAsString(u));
             logger.info("5. Login Successful!");
         } else{
             logger.info("4. Incorrect username and password, please enter your details carefully!");
             ctx.status(403);
             ctx.result("Username or password was incorrect");
+        }
+    };
+
+    public Handler handleUpdate = ctx -> {
+        if(ctx.req.getSession().getAttribute("loggedIn") == null){
+            ctx.status(403);
+            ctx.result("User isn't logged in!");
+        } else{
+            int userId = Integer.parseInt(ctx.req.getSession().getAttribute("user_id").toString());
+            String username = ctx.req.getSession().getAttribute("loggedIn").toString();
+            int role = Integer.parseInt(ctx.req.getSession().getAttribute("role").toString());
+            User u = (om.readValue(ctx.body(), User.class));
+            u.setUser_id(userId);
+            u.setUsername(username);
+            u.setRole(role);
+
+            //We are retrieving user-id, role and username from the session, as we don't want user to modify
+            //these settings.
+            ctx.result(om.writeValueAsString(uService.updateUser(u)));
+            ctx.status(201);
         }
     };
 }

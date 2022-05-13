@@ -31,7 +31,7 @@ public class App {
             server.routes(()-> {
                 path("employee", () -> {
                     post("/login", uController.handleLogin);
-                    //put("/", uController.handleUpdateUser);
+                    put("/update", uController.handleUpdate);
                 });
                 path("manager", () -> {
                 });

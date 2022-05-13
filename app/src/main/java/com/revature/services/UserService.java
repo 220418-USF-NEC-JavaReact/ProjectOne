@@ -8,8 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class UserService {
-
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     IUserDao ud;
     public UserService(IUserDao ud) {
         this.ud = ud;
@@ -28,5 +26,9 @@ public class UserService {
         }
         // password mismatch.
         return null;
+    }
+
+    public User updateUser(User u){
+        return ud.updateUser(u);
     }
 }
