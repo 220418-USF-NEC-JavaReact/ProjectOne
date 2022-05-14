@@ -13,7 +13,6 @@ public class UserDaoJDBC implements IUserDao{
     public static final ConnectionSingleton cs = ConnectionSingleton.getConnectionSingleton();
     private static final Logger logger = LoggerFactory.getLogger(UserDaoJDBC.class);
 
-    private LoginObject lo;
     @Override
     public void createUser(User u) {
         Connection c = cs.getConnection();

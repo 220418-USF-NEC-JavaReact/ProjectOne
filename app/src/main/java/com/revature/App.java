@@ -3,10 +3,13 @@
  */
 package com.revature;
 
+import com.revature.controllers.ReimController;
 import com.revature.controllers.UserController;
+import com.revature.dao.IReimDao;
 import com.revature.dao.IUserDao;
+import com.revature.dao.ReimDaoJDBC;
 import com.revature.dao.UserDaoJDBC;
-import com.revature.models.User;
+import com.revature.services.ReimService;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.core.JavalinConfig;
@@ -21,9 +24,13 @@ public class App {
 
     public static void main(String[] args) {
         IUserDao uDao = new UserDaoJDBC();
-        UserService uService = new UserService(uDao);
-        UserController uController = new UserController(uService);
+        IReimDao rDao = new ReimDaoJDBC();
 
+        UserService uService = new UserService(uDao);
+        ReimService rService = new ReimService(rDao);
+
+        UserController uController = new UserController(uService);
+        ReimController rController = new ReimController(rService);
 
         try{
             Javalin server = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
@@ -32,7 +39,7 @@ public class App {
                 path("employee", () -> {
                     post("/login", uController.handleLogin);
                     put("/update", uController.handleUpdate);
-                    //put("/request", uController.handleReimbursementRequest);
+                    put("/request", rController.handleCreateReim);
                 });
                 path("manager", () -> {
                 });

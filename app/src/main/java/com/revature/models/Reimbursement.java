@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import com.revature.dao.IReimDao;
+
 import java.sql.Timestamp;
 
 public class Reimbursement {
@@ -16,10 +18,9 @@ public class Reimbursement {
     public Reimbursement() {
     }
 
-    public Reimbursement(double amount, String description, int reimbursement_author, int reimbursement_type) {
+    public Reimbursement(double amount, String description, int reimbursement_type) {
         this.amount = amount;
         this.description = description;
-        this.reimbursement_author = reimbursement_author;
         this.reimbursement_type = reimbursement_type;
     }
 
