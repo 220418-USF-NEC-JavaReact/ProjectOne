@@ -1,8 +1,6 @@
 
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-m
-=app/src/main/java/com/revature/utils/ConnectionSingleton.java,b\e\be5f804cc3d9375a1f930bcc5a538d12231ce04d
 [
 +app/src/test/java/com/revature/AppTest.java,b\c\bcf1d2b166f5526d22b7a1e62a4397873d37443d
 `
@@ -13,7 +11,3 @@ c
 3app/src/main/java/com/revature/dao/UserDaoJDBC.java,6\9\69d68631c1757d721413edd21cb29cbda44586ce
 n
 >app/src/main/java/com/revature/controllers/UserController.java,c\8\c8efb88e44ba24395badea17949be5e5b7cd6cad
-_
-/app/src/main/java/com/revature/models/User.java,f\f\fff6efe38be8224006013f88454fc3e0dd198250
-W
-'app/src/main/java/com/revature/App.java,f\f\ffd85c53fd8dba1268f2f2cc4f3c29534795188a
