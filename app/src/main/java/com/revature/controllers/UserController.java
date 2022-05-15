@@ -1,7 +1,6 @@
 package com.revature.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.App;
 import com.revature.models.LoginObject;
 import com.revature.models.User;
 import com.revature.services.UserService;
@@ -56,6 +55,7 @@ public class UserController {
             //these settings.
             ctx.result(om.writeValueAsString(uService.updateUser(u)));
             ctx.status(201);
+            logger.info("6. User updated successfully!");
         }
     };
 }

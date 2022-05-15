@@ -5,3 +5,11 @@
 +app/src/test/java/com/revature/AppTest.java,b\c\bcf1d2b166f5526d22b7a1e62a4397873d37443d
 f
 6app/src/main/java/com/revature/models/LoginObject.java,f\b\fb0517f87edb1c5c5653a0c040b050c642615eb1
+m
+=app/src/main/java/com/revature/utils/ConnectionSingleton.java,b\e\be5f804cc3d9375a1f930bcc5a538d12231ce04d
+`
+0app/src/main/java/com/revature/dao/IUserDao.java,f\d\fd9f562c161ace4a5516683814144e11f161a882
+_
+/app/src/main/java/com/revature/models/User.java,f\f\fff6efe38be8224006013f88454fc3e0dd198250
+c
+3app/src/main/java/com/revature/dao/UserDaoJDBC.java,6\9\69d68631c1757d721413edd21cb29cbda44586ce

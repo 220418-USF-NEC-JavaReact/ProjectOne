@@ -34,4 +34,19 @@ public class ReimController {
         }
 
     };
+
+    public Handler handleViewReim = ctx -> {
+
+        //First check to see if the use already logged in
+        if(ctx.req.getSession().getAttribute("user_id") == null){
+            ctx.status(401);
+            ctx.result("You must login to view reimbursements");
+        } else {
+            int author = Integer.parseInt(ctx.req.getSession().getAttribute("user_id").toString());
+
+            ctx.status(200);
+            ctx.result(om.writeValueAsString(rService.getAllUsersReimbursements(author)));
+        }
+
+    };
 }

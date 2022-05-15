@@ -1,13 +1,14 @@
 package com.revature.dao;
 
 import com.revature.models.Reimbursement;
+import com.revature.models.User;
 import com.revature.utils.ConnectionSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReimDaoJDBC implements IReimDao {
     public static final ConnectionSingleton cs = ConnectionSingleton.getConnectionSingleton();
@@ -33,7 +34,31 @@ public class ReimDaoJDBC implements IReimDao {
     }
 
     @Override
-    public Reimbursement getReim(int reimbursement_id) {
-        return null;
+    public List<Reimbursement> getReim(int userId) {
+        Connection c = cs.getConnection();
+        String sql = "select submitted_date, reimbursement_id, users.first_name, users.last_name , amount, description, reimbursement_type.type, reimbursement_status.status , reimbursement_resolver, resolved_date from reimbursement\n" +
+                "join users on users.user_id = reimbursement_author\n" +
+                "join reimbursement_type on reimbursement.reimbursement_type = reimbursement_type.type_id\n" +
+                "join reimbursement_status on reimbursement.reimbursement_status = reimbursement_status.status_id\n" +
+                "where reimbursement_author = "+userId+";";
+        try{
+            PreparedStatement p = c.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+
+            List<Reimbursement> aList = new ArrayList<>();
+
+            while(rs.next()){
+                String author = rs.getString("first_name") + " " + rs.getString("last_name");
+                Reimbursement r = new Reimbursement(rs.getInt(2), rs.getDouble(5), rs.getTimestamp(1), rs.getTimestamp(10), rs.getString(6), author, rs.getString(9), rs.getString(8), rs.getString(7));
+
+                aList.add(r);
+            }
+
+            return aList;
+
+        } catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

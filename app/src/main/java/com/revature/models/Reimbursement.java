@@ -11,9 +11,49 @@ public class Reimbursement {
     private Timestamp resolved_date;
     private String description;
     private int reimbursement_author;
+
+    private String author;
     private int reimbursement_resolver;
+
+    private String resolver;
     private int reimbursement_status;
+
+    private String status;
     private int reimbursement_type;
+
+    private String type;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getResolver() {
+        return resolver;
+    }
+
+    public void setResolver(String resolver) {
+        this.resolver = resolver;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Reimbursement() {
     }
@@ -23,6 +63,20 @@ public class Reimbursement {
         this.description = description;
         this.reimbursement_type = reimbursement_type;
     }
+
+
+    public Reimbursement(int reimbursement_id, double amount, Timestamp submitted_date, Timestamp resolved_date, String description, String author, String resolver, String status, String type) {
+        this.reimbursement_id = reimbursement_id;
+        this.amount = amount;
+        this.submitted_date = submitted_date;
+        this.resolved_date = resolved_date;
+        this.description = description;
+        this.author = author;
+        this.resolver = resolver;
+        this.status = status;
+        this.type = type;
+    }
+
 
     public int getReimbursement_id() {
         return reimbursement_id;
@@ -104,10 +158,10 @@ public class Reimbursement {
                 ", submitted_date=" + submitted_date +
                 ", resolved_date=" + resolved_date +
                 ", description='" + description + '\'' +
-                ", reimbursement_author=" + reimbursement_author +
-                ", reimbursement_resolver=" + reimbursement_resolver +
-                ", reimbursement_status=" + reimbursement_status +
-                ", reimbursement_type=" + reimbursement_type +
+                ", author='" + author + '\'' +
+                ", resolver='" + resolver + '\'' +
+                ", status='" + status + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

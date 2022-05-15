@@ -40,6 +40,7 @@ public class App {
                     post("/login", uController.handleLogin);
                     put("/update", uController.handleUpdate);
                     put("/request", rController.handleCreateReim);
+                    get("/reimbursements", rController.handleViewReim);
                 });
                 path("manager", () -> {
                 });
