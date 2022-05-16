@@ -1,11 +1,7 @@
 package com.revature.services;
 
-import com.revature.App;
 import com.revature.dao.IUserDao;
-import com.revature.dao.UserDaoJDBC;
 import com.revature.models.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class UserService {
     IUserDao ud;

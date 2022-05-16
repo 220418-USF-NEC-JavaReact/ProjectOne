@@ -32,6 +32,7 @@ public class App {
         UserController uController = new UserController(uService);
         ReimController rController = new ReimController(rService);
 
+
         try{
             Javalin server = Javalin.create(JavalinConfig::enableCorsForAllOrigins);
 
@@ -43,6 +44,7 @@ public class App {
                     get("/reimbursements", rController.handleViewReim);
                 });
                 path("manager", () -> {
+                    get("/reimbursements", rController.handleViewPendingReim);
                 });
             });
 

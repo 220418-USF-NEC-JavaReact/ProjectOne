@@ -11,4 +11,6 @@ public interface IReimDao {
 
     //read
     public List<Reimbursement> getReim(int user_id);
+
+    public List<Reimbursement> getAllPendingReim();
 }

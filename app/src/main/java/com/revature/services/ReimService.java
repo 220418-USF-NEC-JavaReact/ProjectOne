@@ -16,7 +16,11 @@ public class ReimService {
         rd.createReim(r);
     }
 
-    public List<Reimbursement> getAllUsersReimbursements(int id){
+    public List<Reimbursement> getAllUsersReimbursements(int id) {
         return rd.getReim(id);
+    }
+
+    public List<Reimbursement> getAllPendingReimbursements() {
+        return rd.getAllPendingReim();
     }
 }

@@ -21,7 +21,6 @@ public class UserController {
 
     public Handler handleLogin = ctx -> {
         LoginObject lo = om.readValue(ctx.body(),LoginObject.class);
-        System.out.println(lo.username+" "+  lo.password);
         User u = uService.loginUser(lo.username, lo.password);
 
         if(u != null){

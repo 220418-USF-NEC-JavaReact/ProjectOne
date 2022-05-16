@@ -3,10 +3,7 @@ package com.revature.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimService;
-import com.revature.services.UserService;
 import io.javalin.http.Handler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ReimController {
     private ObjectMapper om;
@@ -48,5 +45,19 @@ public class ReimController {
             ctx.result(om.writeValueAsString(rService.getAllUsersReimbursements(author)));
         }
 
+    };
+
+    public Handler handleViewPendingReim = ctx -> {
+        //check to see if the user is a manager
+        if (ctx.req.getSession().getAttribute("user_id") == null) {
+            ctx.status(401);
+            ctx.result("You must login to view reimbursements");
+        } else if ((ctx.req.getSession().getAttribute("role").toString()).equals("1")) {
+            ctx.status(401);
+            ctx.result("Only Managers are authorized to view this page");
+        } else {
+            ctx.status(200);
+            ctx.result(om.writeValueAsString(rService.getAllPendingReimbursements()));
+        }
     };
 }

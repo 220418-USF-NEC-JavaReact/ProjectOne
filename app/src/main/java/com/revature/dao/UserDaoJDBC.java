@@ -1,6 +1,5 @@
 package com.revature.dao;
 
-import com.revature.models.LoginObject;
 import com.revature.models.User;
 import com.revature.utils.ConnectionSingleton;
 import org.slf4j.Logger;
