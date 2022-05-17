@@ -1,0 +1,12 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8Ά«€ώ0
+l
+java:S2095,"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±8Α«€ώ0
+l
+java:S2095J"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±8Α«€ώ0
+P
+java:S3416".Update this logger to use "ReimDaoJDBC.class".(Ω°¥ÿωÿÿÿÿ8Α«€ώ0
+H
+java:S1168<"+Return an empty collection instead of null.(¥Ήο8Ρ«€ώ0
+H
+java:S1168Z"+Return an empty collection instead of null.(¥Ήο8Ρ«€ώ0
