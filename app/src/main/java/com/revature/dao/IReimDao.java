@@ -13,4 +13,8 @@ public interface IReimDao {
     public List<Reimbursement> getReim(int user_id);
 
     public List<Reimbursement> getAllPendingReim();
+
+    public void denyReim(int reimId);
+
+    public void approveReim(int reimId);
 }

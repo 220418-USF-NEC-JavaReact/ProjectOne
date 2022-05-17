@@ -57,4 +57,16 @@ public class UserController {
             logger.info("6. User updated successfully!");
         }
     };
+
+    public Handler handleLogout = ctx -> {
+        if(ctx.req.getSession().getAttribute("loggedIn") != null){
+            ctx.req.getSession().invalidate();
+            ctx.status(200);
+            ctx.result("User logged out!");
+            logger.info("7. User logged out successfully!");
+        }else{
+            ctx.status(403);
+            ctx.result("User isn't logged in!");
+        }
+    };
 }

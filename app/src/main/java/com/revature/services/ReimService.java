@@ -23,4 +23,8 @@ public class ReimService {
     public List<Reimbursement> getAllPendingReimbursements() {
         return rd.getAllPendingReim();
     }
+
+    public void denyReim(int reimId) {
+        rd.denyReim(reimId);
+    }
 }

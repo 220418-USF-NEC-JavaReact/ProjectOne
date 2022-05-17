@@ -90,4 +90,28 @@ public class ReimDaoJDBC implements IReimDao {
             return null;
         }
     }
+
+    @Override
+    public void denyReim(int reimId) {
+        Connection c = cs.getConnection();
+        String sql = "update reimbursement set reimbursement_status = 3 where reimbursement_id = "+reimId+";";
+        try {
+            PreparedStatement p = c.prepareStatement(sql);
+            p.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void approveReim(int reimId) {
+        Connection c = cs.getConnection();
+        String sql = "update reimbursement set reimbursement_status = 2 where reimbursement_id = "+reimId+";";
+        try {
+            PreparedStatement p = c.prepareStatement(sql);
+            p.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

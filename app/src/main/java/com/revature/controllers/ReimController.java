@@ -60,4 +60,23 @@ public class ReimController {
             ctx.result(om.writeValueAsString(rService.getAllPendingReimbursements()));
         }
     };
+
+    public Handler handleDeny = ctx -> {
+        //Deny a reimbursement request if user is manager
+        if (ctx.req.getSession().getAttribute("user_id") == null) {
+            ctx.status(401);
+            ctx.result("You must login to Deny reimbursements");
+        } else if ((ctx.req.getSession().getAttribute("role").toString()).equals("1")) {
+            ctx.status(401);
+            ctx.result("Only Managers are authorized to deny reimbursements");
+        } else {
+            Reimbursement r = om.readValue(ctx.body(), Reimbursement.class);
+            System.out.println("Reiumbursement ID"+r.getReimbursement_id());
+            rService.denyReim(r.getReimbursement_id());
+            ctx.status(200);
+            ctx.result("Reimbursement request denied");
+        }
+    };
+
+
 }
