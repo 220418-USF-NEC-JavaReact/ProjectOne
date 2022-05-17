@@ -98,6 +98,7 @@ public class ReimDaoJDBC implements IReimDao {
         try {
             PreparedStatement p = c.prepareStatement(sql);
             p.executeUpdate();
+            logger.info("Reimbursement with id "+reimId+" has been denied");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -110,6 +111,7 @@ public class ReimDaoJDBC implements IReimDao {
         try {
             PreparedStatement p = c.prepareStatement(sql);
             p.executeUpdate();
+            logger.info("Reimbursement with id "+reimId+" has been approved");
         } catch (SQLException e) {
             e.printStackTrace();
         }

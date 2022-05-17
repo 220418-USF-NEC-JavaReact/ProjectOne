@@ -27,4 +27,8 @@ public class ReimService {
     public void denyReim(int reimId) {
         rd.denyReim(reimId);
     }
+
+    public void approveReim(int reimId) {
+        rd.approveReim(reimId);
+    }
 }

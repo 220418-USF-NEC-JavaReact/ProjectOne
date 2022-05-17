@@ -46,7 +46,7 @@ public class App {
                 path("manager", () -> {
                     get("/reimbursements", rController.handleViewPendingReim);
                     put("/deny", rController.handleDeny);
-                    //put("/approve", rController.handleApprove);
+                    put("/approve", rController.handleApprove);
                 });
                 path("logout", () -> {
                     get("/", uController.handleLogout);

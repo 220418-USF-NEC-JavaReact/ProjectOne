@@ -78,5 +78,21 @@ public class ReimController {
         }
     };
 
+    public Handler handleApprove = ctx -> {
+        //Approve a reimbursement request if user is manager
+        if (ctx.req.getSession().getAttribute("user_id") == null) {
+            ctx.status(401);
+            ctx.result("You must login to Approve reimbursements");
+        } else if ((ctx.req.getSession().getAttribute("role").toString()).equals("1")) {
+            ctx.status(401);
+            ctx.result("Only Managers are authorized to approve reimbursements");
+        } else {
+            Reimbursement r = om.readValue(ctx.body(), Reimbursement.class);
+            rService.approveReim(r.getReimbursement_id());
+            ctx.status(200);
+            ctx.result("Reimbursement request approved");
+        }
+    };
+
 
 }
