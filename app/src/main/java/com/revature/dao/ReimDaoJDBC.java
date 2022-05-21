@@ -67,8 +67,8 @@ public class ReimDaoJDBC implements IReimDao {
         String sql = "select submitted_date, reimbursement_id, users.first_name, users.last_name , amount, description, reimbursement_type.type, reimbursement_status.status from reimbursement\n" +
                 "join users on users.user_id = reimbursement_author\n" +
                 "join reimbursement_type on reimbursement.reimbursement_type = reimbursement_type.type_id\n" +
-                "join reimbursement_status on reimbursement.reimbursement_status = reimbursement_status.status_id\n" +
-                "where reimbursement_status = 1;";
+                "join reimbursement_status on reimbursement.reimbursement_status = reimbursement_status.status_id\n";
+        //        "where reimbursement_status = 1;";
 
         try {
             PreparedStatement p = c.prepareStatement(sql);
