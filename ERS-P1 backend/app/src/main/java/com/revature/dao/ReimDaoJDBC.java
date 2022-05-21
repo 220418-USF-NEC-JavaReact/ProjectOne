@@ -5,7 +5,9 @@ import com.revature.utils.ConnectionSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +70,7 @@ public class ReimDaoJDBC implements IReimDao {
                 "join users on users.user_id = reimbursement_author\n" +
                 "join reimbursement_type on reimbursement.reimbursement_type = reimbursement_type.type_id\n" +
                 "join reimbursement_status on reimbursement.reimbursement_status = reimbursement_status.status_id\n" +
-                "where reimbursement_status = 1;";
+                "order by reimbursement_status;";
 
         try {
             PreparedStatement p = c.prepareStatement(sql);
@@ -94,7 +96,9 @@ public class ReimDaoJDBC implements IReimDao {
     @Override
     public void denyReim(int reimId) {
         Connection c = cs.getConnection();
-        String sql = "update reimbursement set reimbursement_status = 3 where reimbursement_id = "+reimId+";";
+        LocalDate resolved_date =  java.time.LocalDate.now();
+        String sql = "update reimbursement set reimbursement_status = 3 , resolved_date ='"+resolved_date+"' where reimbursement_id = "+reimId+";";
+        System.out.println(sql);
         try {
             PreparedStatement p = c.prepareStatement(sql);
             p.executeUpdate();
@@ -107,7 +111,8 @@ public class ReimDaoJDBC implements IReimDao {
     @Override
     public void approveReim(int reimId) {
         Connection c = cs.getConnection();
-        String sql = "update reimbursement set reimbursement_status = 2 where reimbursement_id = "+reimId+";";
+        LocalDate resolved_date =  java.time.LocalDate.now();
+        String sql = "update reimbursement set reimbursement_status = 2 , resolved_date ='"+resolved_date+"' where reimbursement_id = "+reimId+";";
         try {
             PreparedStatement p = c.prepareStatement(sql);
             p.executeUpdate();
