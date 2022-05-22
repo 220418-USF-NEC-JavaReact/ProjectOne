@@ -4,6 +4,7 @@ import { loginUser, toggleError } from '../../Slices/UserSlice';
 import { AppDispatch } from '../../Store';
 
 import "./LoginForm.css"
+import logo from "./logo.png"
 
 export const Login: React.FC = () => {
 
@@ -33,23 +34,17 @@ export const Login: React.FC = () => {
     }
 
     return(
-        <div className="login">
-            <div className="text-container">
-                <h1 className="login-header">Employee Reimbursement System</h1>
-                <h2 className="login-header">Sign in to view account</h2>
+        <div className="main">
+                <img src={logo} className="logo" alt="Employee Reimbursement System"/>
+                <form id="login-form" className="login-form">
+                    <label className="welcome">Sign in to view account</label>
+                    <label htmlFor="username" className="label">Please Enter Username</label>
+                    <input autoComplete="off" type="text" id="username" className="input" placeholder="username" name="username" onChange={handleInput}></input>
+                    <label htmlFor="password" className="label">Please Enter Password</label>
+                    <input type="password" id="password" className="input" name="password" placeholder="password" onChange={handleInput}></input>
+                    <button type="submit" id="submit" className="btnSubmit"  onClick={handleLogin}>Login</button>
+                </form>
             </div>
-            <form className="login-form">
-                <div className="input-div">
-                    <h4 className="input-h4">Please Enter Username</h4>
-                    <input autoComplete="off" className="login-input" type="text" placeholder="username" name="username" onChange={handleInput}/>
-                </div>
-                <div className="input-div">
-                    <h4 className="input-h4">Please Enter Password</h4>
-                    <input className="login-input" type="password" name="password" placeholder="password" onChange={handleInput}/>
-                </div>
-            </form>
-            <button className="login-button" onClick={handleLogin}>Login</button>
-        </div>
     )
 
 }
