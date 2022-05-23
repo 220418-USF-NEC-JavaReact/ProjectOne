@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
                     <Link to={"/feed"} className="nav-link">Home</Link>
                 </li>
                 <li className="logout">
-                    <Link to={"/login"} className="nav-link">
+                    <Link to={"/login"}>
                         <button className="logout-btn" onClick={handleLogout}>Logout</button>
                     </Link>
                 </li>
