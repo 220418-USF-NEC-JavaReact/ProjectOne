@@ -42,7 +42,7 @@ export const CreateReimbursement: React.FC = () => {
                 submitted_date: Date.now()
             }
 
-            dispatch(CreateReimbursementRequest(Reimbursement));
+            dispatch(CreateReimbursementRequest(Reimbursement))
         }
     }
 

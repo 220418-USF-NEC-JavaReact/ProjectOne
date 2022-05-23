@@ -5,15 +5,18 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../Store';
 import { approveReimbursementRequest, denyReimbursementRequest } from '../../Slices/ReimbursementSlice';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Reimbursement = (post: any) => {
-    debugger
     const dispatch: AppDispatch = useDispatch();
 
     const [submittedDate, setSubmittedDate] = useState<Date>(new Date(parseInt(post.submitted_date)));
-
     const [userDetails, setUserDetails] = useState({
         role:0
     });
+
+    const notify = (msg: string) => toast(msg);
 
     useEffect(() => {
         if (localStorage.getItem('userDetails')) {
@@ -25,11 +28,15 @@ export const Reimbursement = (post: any) => {
     }, []);
 
     const approveRequest = (event: any) => {
-        dispatch(approveReimbursementRequest(Number(event.target.value)));
+        dispatch(approveReimbursementRequest(Number(event.target.value))).then( (response) => {
+            notify(response.payload);
+        });
     }
 
     const denyRequest = (event: any) => {
-        dispatch(denyReimbursementRequest(Number(event.target.value)));
+        dispatch(denyReimbursementRequest(Number(event.target.value))).then((response) => {
+            notify(response.payload);
+        });
     }
 
     return(
@@ -45,7 +52,8 @@ export const Reimbursement = (post: any) => {
                 <p>Status: {post.status}</p>
                 <p>Submitted Date: {submittedDate.toDateString()}</p>
             </div>
-            {userDetails.role === 2 ?<div><button className="approve-deny-btn" value={post.reimbursement_id} onClick={approveRequest}>Approve</button><button className="approve-deny-btn" value={post.reimbursement_id} onClick={denyRequest}>Deny</button></div> : <></>}
+            <ToastContainer />
+            {userDetails.role === 2 && post.status === 'Pending' ?<div><button className="approve-deny-btn" value={post.reimbursement_id} onClick={approveRequest}>Approve</button><button className="approve-deny-btn" value={post.reimbursement_id} onClick={denyRequest}>Deny</button></div> : <></>}
         </div>
     )
 

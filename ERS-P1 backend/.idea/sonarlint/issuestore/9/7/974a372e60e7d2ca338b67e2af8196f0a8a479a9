@@ -7,13 +7,13 @@ java:S2629i"7Use the built-in formatting to construct this argument.(θ•Ϋ
 M
 java:S2629w"7Use the built-in formatting to construct this argument.(Κυ³
 e
-java:S2095L"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±
-e
-java:S2095u"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±
+java:S2095g"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±
 e
 java:S2095."OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±
 e
-java:S2095g"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±
+java:S2095L"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±
+e
+java:S2095u"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(†σω±
 I
 java:S3416".Update this logger to use "ReimDaoJDBC.class".(Ω°¥ÿωÿÿÿÿ
 N	java:S106"9Replace this use of System.out or System.err by a logger.(Β–‘φ

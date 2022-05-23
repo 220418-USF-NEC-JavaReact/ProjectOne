@@ -10,6 +10,8 @@ import { getUserDetails } from '../../Slices/UserSlice';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import { Reimbursement } from '../../Components/Reimbursement/Reimbursement';
 import { IReimbursement } from '../../Interfaces/IPost';
+import "./ProfilePage.css";
+
 export const ProfilePage:React.FC = () => {
 
     const profile = useSelector((state:RootState) => state.user);
@@ -28,19 +30,13 @@ export const ProfilePage:React.FC = () => {
 
     return (
         <div>
-            <Navbar />
-            <h1>Profile of {profile.currentProfile?.firstName} {profile.currentProfile?.lastName}</h1>
-            {profile.currentProfile?.posts ? 
-                <div>
-                    {/* {profile.currentProfile.posts.map((post:IReimbursement)=>{
-                        return (
-                            <Post {...post} key={post.reimbursement_id} />
-                        )
-                    })} */}
-                </div>
-                :
-                <h1>no posts to display</h1>
-            }
+            <Navbar/>
+            <div className='userDetailsContainer'>
+                <h1>Firstname: {profile.user?.firstName}</h1>
+                <h1>Lastname: {profile.user?.lastName}</h1>
+                <h1>Email Id: {profile.user?.email}</h1>
+            </div>
+            
         </div>
     )
 }
