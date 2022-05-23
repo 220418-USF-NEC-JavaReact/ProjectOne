@@ -9,6 +9,7 @@ import com.revature.dao.IReimDao;
 import com.revature.dao.IUserDao;
 import com.revature.dao.ReimDaoJDBC;
 import com.revature.dao.UserDaoJDBC;
+import com.revature.models.Reimbursement;
 import com.revature.services.ReimService;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
@@ -31,6 +32,13 @@ public class App {
 
         UserController uController = new UserController(uService);
         ReimController rController = new ReimController(rService);
+
+        Reimbursement r = new Reimbursement();
+        //r.setAmount(23.36);
+        //r.setDescription("Misc. items from code");
+        //r.setReimbursement_type(4);
+        //r.getReimbursement_author(1)
+        //rDao.createReim(r);
 
 
         try{

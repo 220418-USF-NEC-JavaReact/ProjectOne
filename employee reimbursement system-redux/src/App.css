@@ -1,5 +1,5 @@
 :root {
-  --bg: #2D2E2E;
+  --bg: #0d0a00;
   --dark: #0F0F0F;
   --btn-blue: #3891A6;
   --accent: #23CE6B;
@@ -15,5 +15,5 @@
 }
 
 body {
-  background-color: #d4eaed;
+  background-color: #0d0a00;
 }
