@@ -51,6 +51,15 @@
         padding: 15px;
 }
 
+.nav-link:hover
+{
+    color: gold;
+    box-shadow: 0px 0px 25px gold;
+    background-color: #ffc1071f;
+    padding: 15px;
+    border-radius: 10px;
+}
+
 .logout-btn{
     background-color: #ffc1071f;
     font-weight: bold;
@@ -65,6 +74,15 @@
     color: gold;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     border: none;
+}
+
+.logout-btn:hover
+{
+    color: gold;
+    box-shadow: 0px 0px 25px gold;
+    background-color: #ffc1071f;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 .logout {
