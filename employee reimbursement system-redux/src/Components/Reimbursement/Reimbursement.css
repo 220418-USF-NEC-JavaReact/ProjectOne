@@ -12,11 +12,11 @@
     height: fit-content;
     flex-direction: column;
     padding: 25px;
-    color: #1a1a1b;
+    color: gold;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     padding: 16px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: #362a00;
     margin: 10px 0;
 }
 
@@ -47,17 +47,23 @@
 }
 
 .approve-deny-btn {
-    width: 100px;
-    margin: 15px 5px;
-    height: 35px;
+    font-size: 25px;
+    text-decoration: none;
+    color: gold;
+    padding: 15px;
+    margin: 10px 50px 10px 50px;
+    transition: 0.3s;
+    border: 2px solid #544109;
     border-radius: 10px;
-    border: none;
-    align-self: flex-end;
-    background: var(--btn-blue);
-    color: var(--dark);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    background-color: #ffc1071f;
     cursor: pointer;
+}
+
+.approve-deny-btn:hover
+{    
+    color: gold;
+    box-shadow: 0px 0px 25px gold;
+    background-color: #ffc1071f;
+    padding: 15px;
+    border-radius: 10px;
 }
