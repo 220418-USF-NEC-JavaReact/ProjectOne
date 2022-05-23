@@ -9,22 +9,25 @@
 .create-container {
     display:flex;
     flex-direction: column;
-    border: 2px, solid var(--dark);
+    border: 2px dotted gold;
+	border-radius:5px;
     padding: 25px;
     position: relative;
     width: 35%;
+	margin-top:20px;
+	margin-bottom:20px;
 }
 
 .reimbursement-input {
     display: block;
-    width: 60%;
+    width: 100%;
     padding: 0 6px;
     font-size: 1rem;
     line-height: 1.5;
     color: #897784;;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid gold;
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -61,23 +64,23 @@
 }
 
 .create-btn {
-    width: 150px;
-    height: 50px;
+    font-size: 25px;
+    text-decoration: none;
+    color: gold;
+    padding: 15px;
+    margin: 10px 50px 10px 50px;
+    transition: 0.3s;
+    border: 2px solid #544109;
     border-radius: 10px;
-    border: none;
-    align-self: flex-end;
-    background: var(--btn-blue);
-    color: var(--dark);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    background-color: #ffc1071f;
 }
 
 .create-btn:hover {
-    cursor: pointer;
-    background: var(--accent);
-    transition: .3s;
+    color: gold;
+    box-shadow: 0px 0px 25px gold;
+    background-color: #ffc1071f;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 ::placeholder{
@@ -86,4 +89,9 @@
 
 .input-container {
     margin-bottom: 30px;
+}
+
+.input-h4{
+	color:gold;
+	margin-top:20px;
 }
