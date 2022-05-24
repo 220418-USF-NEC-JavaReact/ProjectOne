@@ -38,7 +38,7 @@ export const Login: React.FC = () => {
             <div className="main">
                     <img src={logo} className="logo" alt="Employee Reimbursement System"/>
                     <form id="login-form" className="login-form">
-                        <label htmlFor="email" className="label">Email</label>
+                        <label htmlFor="username" className="label">Username</label>
                         <input autoComplete="off" className="input" type="text" placeholder="username" name="username" onChange={handleInput}></input>
                         <label htmlFor="password" className="label">Password</label>
                         <input className="input" type="password" name="password" placeholder="password" onChange={handleInput}></input>
